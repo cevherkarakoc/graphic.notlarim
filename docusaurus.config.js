@@ -3,7 +3,7 @@ module.exports = {
   tagline: 'Grafik Programlama Üzerine Aldığım Şahsi Notlar',
   url: 'https://graphic.notlarim.dev',
   baseUrl: '/',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon-32x32.png',
   organizationName: 'cevherkarakoc', // Usually your GitHub org/user name.
   projectName: 'graphic.notlarim', // Usually your repo name.
   themeConfig: {
