@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Grafik Programlama Notlarım',
   tagline: 'Grafik Programlama Üzerine Aldığım Şahsi Notlar',
-  url: 'graphic.notlarim.dev',
+  url: 'https://graphic.notlarim.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'cevherkarakoc', // Usually your GitHub org/user name.
