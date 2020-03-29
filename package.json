@@ -16,7 +16,8 @@
     "katex": "^0.11.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-katex": "^2.0.2"
+    "react-katex": "^2.0.2",
+    "webgl-math": "^1.1.0"
   },
   "browserslist": {
     "production": [
