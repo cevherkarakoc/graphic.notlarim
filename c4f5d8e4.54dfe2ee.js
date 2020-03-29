@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{105:function(n,t,e){"use strict";e.r(t);var a=e(0),o=e.n(a),c=e(114),r=e(111);t.default=function(){return o.a.createElement(c.a,{to:Object(r.a)("/intro")})}}}]);

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{106:function(e){e.exports=JSON.parse('{"docsSidebars":{"GraphicSidebar":[{"type":"category","label":"Ba\u015flang\u0131\xe7","items":[{"type":"link","label":"Giri\u015f","href":"/intro"}]}]},"permalinkToSidebar":{"/intro":"GraphicSidebar"}}')}}]);
