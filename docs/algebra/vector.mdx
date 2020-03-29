@@ -1,0 +1,131 @@
+---
+title: Vektörler
+---
+:::caution Dikkat
+  Eğer **_graphic_** notlarımı ilk defa okuyorsanız. İlk önce [Giriş](intro.md) belgesini okumanızı tavsite ederim.
+:::
+:::note Not
+  * Kod örneklerinde, vektör hesapları için [WebGL-Math](https://github.com/cevherkarakoc/WebGL-Math) kullanıldı.  
+  Başka bir seçenek olarak [glMatrix](http://glmatrix.net) de kullanılabilir.  
+  * WebGL API, vektör paremetre olarak [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) beklediği için örneklerde Float32Array kullanıldı.
+:::
+
+## Tanım
+Vektör, uzunluğu ve yönü olan bir niceliktir.  
+Bilgisayar grafiklerinde; **hız**, **ivme**, **kuvvet** ve **konum**_(başlagıç noktası orijin olmalı)_ değerlerini göstermek için kullanılabilir.
+
+import { InlineMath, BlockMath } from "react-katex";
+import Image from "../../src/components/Image";
+import Vector from "../../src/components/Vector";
+
+## Birim Vektör (Unit Vector)
+Uzunluğu 1 birim olan vektöre **birim vektör** denir.
+Bir vektörün normalize edilmiş hali, aynı yönü gösteren birim vektöre eşittir. 
+
+```jsx live 
+() => {
+  const normalized = GLMath.Vector.normalize( Float32Array.of(3, 4) );
+
+  return <h4>Sonuç : ( {normalized.join(DOC.separator)} )</h4>;
+}
+```
+
+## Toplama - Çıkarma
+Vektörlerin toplamı, yine bir **vektör** verir ve şu şekilde gösterilir:
+
+<BlockMath>
+  {String.raw`
+    \color{teal}\vec{A} \color{black}+ \color{brown}\vec{B} 
+  `}
+</BlockMath>
+
+<BlockMath>
+  {String.raw`
+    \color{teal}\begin{pmatrix}  3 \\ 1 \\ 0 \end{pmatrix}
+    \color{black}+ 
+    \color{brown}\begin{pmatrix}  2 \\ 5 \\ 1 \end{pmatrix}
+    \color{black}=
+    \color{purple}\begin{pmatrix}  3+2 \\ 1+5 \\ 0+1 \end{pmatrix}
+    \color{black}=
+    \color{purple}\begin{pmatrix}  5 \\ 6 \\ 1 \end{pmatrix}
+  `}
+</BlockMath>
+
+```jsx live
+() => {
+  const result = GLMath.Vector.add(
+    Float32Array.of(3, 1, 0),
+    Float32Array.of(2, 5, 1)
+  );
+
+  return <h4>Sonuç : ( {result.join(DOC.separator)} )</h4>;
+}
+```
+
+## Nokta Çarpım (Dot Product)
+Nokta çarpım, **skaler** bir değer verir ve şu şekilde gösterilir:
+
+<BlockMath>
+  {String.raw`
+    \color{teal}\vec{A} \color{black}\cdot \color{brown}\vec{B} 
+    =
+    \color{teal}\left\lVert{A}\right\rVert
+    \color{brown}\left\lVert{B}\right\rVert
+    \color{black}cos\theta
+  `}
+</BlockMath>
+
+* Sonuç 0 (sıfır) ise, vektörler birbirin dik açıdadır.
+* İki vektör de birim vektör ise, sonuç **vektörler** arasındakı **açı**nın cosinus değerini verir.
+
+:::important Önemli
+<BlockMath>
+  {String.raw`
+    \cos(0) = 1  , 
+    \cos(\pi) = 0 , 
+    \cos(2\pi) = -1
+  `}
+</BlockMath>
+ <center>olduğundan iki vektör arasındaki açıyı -1,1 arasına eşlemek için kullanılabilir.</center>
+ <center>( Işığın, bir yüzeyle karşılaşma açısı vb. )</center>
+:::
+
+```jsx live
+() => {
+  const theta = GLMath.Vector.dot(
+    GLMath.Vector.normalize(Float32Array.of(1, 1)),
+    GLMath.Vector.normalize(Float32Array.of(1, 0))
+  );
+
+  const degree = DOC.radiansToDegrees(Math.acos(theta));
+
+  return <h4>Aradaki Açı : {degree}° - {theta} radyan </h4>;
+}
+```
+
+## Çarpaz Çarpım (Cross Product)
+Üç boyutlu uzayda, iki vektör ile yapılır ve sonucu bu iki vektöre **dik** olan üçünçü bir **vektör**dür.  
+Şu şekilde gösterilir:
+<BlockMath>
+  {String.raw`
+    \color{teal}\vec{A} \color{black}\times \color{brown}\vec{B}
+  `}
+</BlockMath>
+
+<Image src='/img/cross_product.svg' size='200px'>
+  Çarpaz Çarpım
+</Image>
+
+* Sonuç vektörünün uzunluğu, 2 vektorün oluşturduğu paralelkenarın alanına eşittir.
+* Vektörler aynı yönde veya zıt yönlü ise sonuç vektörünün uzunluğu 0(sıfır) olur.
+
+```jsx live
+() => {
+  const result = GLMath.Vector.cross(
+    Float32Array.of(1, 2, 3),
+    Float32Array.of(3, 1, -1)
+  );
+
+  return <h4>Sonuç : ( {result.join(DOC.separator)} )</h4>;
+}
+```

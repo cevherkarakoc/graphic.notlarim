@@ -6,6 +6,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'cevherkarakoc', // Usually your GitHub org/user name.
   projectName: 'graphic.notlarim', // Usually your repo name.
+  themes: ['@docusaurus/theme-classic',,'@docusaurus/theme-live-codeblock'],
   themeConfig: {
     sidebarCollapsible: false,
     navbar: {
@@ -41,6 +42,10 @@ module.exports = {
         },
       },
     ],
+  ],
+  scripts: [
+    `https://unpkg.com/webgl-math@1.1.0/dist/webgl-math.min.js`,
+    `/doc-script.js`,
   ],
   stylesheets: [
     'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css',

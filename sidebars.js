@@ -1,8 +1,8 @@
 module.exports = {
   GraphicSidebar: {
     'Başlangıç' : ['intro'],
-    'Matematik' : [
-      "math/vector"
+    'Doğrusal Cebir' : [
+      "algebra/vector"
     ],
   },
 };
