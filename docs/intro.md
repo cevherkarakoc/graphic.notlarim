@@ -1,5 +1,6 @@
 ---
 title: Giriş
+slug: /
 ---
 
 **Bilgisayar Grafikleri** üzerine öğrendiklerini derleyip toplayarak Türkçe bir kaynak oluşturmak amacıyla bu belgeleri hazırlıyorum. Tüm belgeler kendi bildiklerim ve öğrendiklerimin bir derlemesi olduğu için **hatalar ve yanlış anlamalar** içerebilir.
