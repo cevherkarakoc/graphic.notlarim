@@ -26,7 +26,7 @@ Bir vektörün normalize edilmiş hali, aynı yönü gösteren birim vektöre e�
 () => {
   const normalized = GLMath.Vector.normalize( Float32Array.of(3, 4) );
 
-  return <h4>Sonuç : ( {normalized.join(DOC.separator)} )</h4>;
+  return <VectorPrint vector={normalized}/>;
 }
 ```
 
@@ -58,7 +58,7 @@ Vektörlerin toplamı, yine bir **vektör** verir ve şu şekilde gösterilir:
     Float32Array.of(2, 5, 1)
   );
 
-  return <h4>Sonuç : ( {result.join(DOC.separator)} )</h4>;
+  return <VectorPrint vector={result}/>;
 }
 ```
 
@@ -97,9 +97,9 @@ Nokta çarpım, **skaler** bir değer verir ve şu şekilde gösterilir:
     GLMath.Vector.normalize(Float32Array.of(1, 0))
   );
 
-  const degree = DOC.radiansToDegrees(Math.acos(theta));
+  const angle = Math.acos(theta);
 
-  return <h4>Aradaki Açı : {degree}° - {theta} radyan </h4>;
+  return <AnglePrint label='Aradaki Açı' angle={angle} />;
 }
 ```
 
@@ -126,6 +126,6 @@ Nokta çarpım, **skaler** bir değer verir ve şu şekilde gösterilir:
     Float32Array.of(3, 1, -1)
   );
 
-  return <h4>Sonuç : ( {result.join(DOC.separator)} )</h4>;
+  return <VectorPrint vector={result}/>;
 }
 ```
