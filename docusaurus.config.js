@@ -35,7 +35,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/', 
-          editUrl: 'https://github.com/cevherkarakoc/graphic.notlarim/edit/master/website/',
+          editUrl: 'https://github.com/cevherkarakoc/graphic.notlarim/edit/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
