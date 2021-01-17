@@ -1,0 +1,133 @@
+---
+title: Dönüşüm (Transformation) Matrisi 
+---
+:::caution Dikkat
+  Eğer **_graphic_** notlarımı ilk defa okuyorsanız. İlk önce [Giriş](intro.md) belgesini okumanızı tavsite ederim.
+:::
+:::note Not
+  * Kod örneklerinde, matris hesaplamaları için [WebGL-Math](https://github.com/cevherkarakoc/WebGL-Math) kullanıldı.  
+  Başka bir seçenek olarak [glMatrix](http://glmatrix.net) de kullanılabilir.  
+  * Örnekler CSS [transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) özelliğinin [matrix3d()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d()) fonksiyonu üzerinden verildi. 
+:::
+
+import { InlineMath, BlockMath } from "react-katex";
+
+## Öteleme (Translation)
+Uzayda, bir noktayı **T** vektorü boyunca hareket ettirmek için kullanılır ve şu şekilde gösterilir: 
+
+<BlockMath>
+  {String.raw`
+    \begin{bmatrix}
+      1 & 0 & 0 & \color{red}T_x\\
+      0 & 1 & 0 & \color{green}T_y\\
+      0 & 0 & 1 & \color{blue}T_z\\
+      0 & 0 & 0 & 1\\
+    \end{bmatrix}
+  `}
+</BlockMath>
+
+Örnekte nesne **(50, -75, 0)** vektörü ile öteleniyor.
+```jsx live
+() => {
+  const idendity = GLMath.Matrix.idendity(4);
+  const translationMatrix = GLMath.Transform.translate(
+    idendity,
+    Float32Array.of(50, -75, 0)
+  );
+
+  return <TransformViewer matrix={translationMatrix}/>;
+}
+```
+
+## Döndürme (Rotation)
+Uzayda, bir noktayı **R** ekseninde **θ** derece dönürmek için kullanılır. 
+
+Örnekte nesne **Z** ekseni boyunca **45°** derece döndürülüyor.
+```jsx live
+() => {
+  const idendity = GLMath.Matrix.idendity(4);
+  const angle = degreesToRadians(45);
+  const axis = Float32Array.of(0, 0, 1);
+  const rotationMatrix = GLMath.Transform.rotate(
+    idendity,
+    angle,
+    axis
+  );
+
+  return <TransformViewer matrix={rotationMatrix}/>;
+}
+```
+
+## Ölçekleme (Scaling)
+Uzayda, bir noktayı **S** vektorüne göre ölçeklemek için kullanılır ve şu şekilde gösterilir:  
+
+<BlockMath>
+  {String.raw`
+    \begin{bmatrix}
+      \color{red}S_x & 0 & 0 & 0\\
+      0 & \color{green}S_y & 0 & 0\\
+      0 & 0 & \color{blue}S_z & 0\\
+      0 & 0 & 0 & 1\\
+    \end{bmatrix}
+  `}
+</BlockMath>
+
+Örnekte **X** ekseninde 1.5, **Y** ekseninde 0.75 katına çıkarılıyor. Z ekseninde ise aynı ölçekte kalıyor.
+
+```jsx live
+() => {
+  const idendity = GLMath.Matrix.idendity(4);
+  const scalingMatrix = GLMath.Transform.scale(
+    idendity,
+    Float32Array.of(1.5, 0.75, 1)
+  );
+
+  return <TransformViewer matrix={scalingMatrix}/>;
+}
+```
+
+## Dönüşüm İşlemlerini Birleştirmek
+İki dönüşüm matrisine, çarpım işlemi uygulanarak aynı dönüşümü yapan tek bir matris elde edilebilir.
+
+:::important Önemli
+* Matris çarpımının değişme özelliği yoktur. 
+* Bu yüzden matrislerin çarpım sırasının değişmesi sonuçta çıkacak dönüşümü de değiştirecektir. 
+* **Dönüşümlerin nesneye uygulanma sıralaması, çarpım işlemlerinin sıralaması ile ters olacaktır.**
+:::
+
+Örnekte dönüşümlerin Ölçekleme, Döndürme ve Öteleme sıralaması ile uygulandığı görülüyor.  
+Çarma işlemlerini sırasını değiştirerek sonucun nasıl değiştiği görülebilir.
+
+```jsx live
+() => {
+  const idendity = GLMath.Matrix.idendity(4);
+  const angle = degreesToRadians(45);
+  const axis = Float32Array.of(0, 0, 1);
+  
+  const translationMatrix = GLMath.Transform.translate(
+    idendity,
+    Float32Array.of(50, -75, 0)
+  );
+
+  const rotationMatrix = GLMath.Transform.rotate(
+    idendity,
+    angle,
+    axis
+  );
+
+  const scalingMatrix = GLMath.Transform.scale(
+    idendity,
+    Float32Array.of(1.5, 0.75, 1)
+  );
+
+  const modelMatrix = GLMath.Matrix.multiply(
+    GLMath.Matrix.multiply(
+      translationMatrix,
+      rotationMatrix
+    ),
+    scalingMatrix
+  );
+
+  return <TransformViewer matrix={modelMatrix}/>;
+}
+```
