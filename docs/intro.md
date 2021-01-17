@@ -3,7 +3,7 @@ title: Giriş
 slug: /
 ---
 
-**Bilgisayar Grafikleri** üzerine öğrendiklerini derleyip toplayarak Türkçe bir kaynak oluşturmak amacıyla bu belgeleri hazırlıyorum. Tüm belgeler kendi bildiklerim ve öğrendiklerimin bir derlemesi olduğu için **hatalar ve yanlış anlamalar** içerebilir.
+**Bilgisayar Grafikleri** üzerine öğrendiklerimi derleyip toplayarak Türkçe bir kaynak oluşturmak amacıyla bu belgeleri hazırlıyorum. Tüm belgeler kendi bildiklerim ve öğrendiklerimin bir derlemesi olduğu için **hatalar ve yanlış anlamalar** içerebilir.
 
 Kod örnekleri, erişimi herkes için daha kolay olduğu için [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript), [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) ve [GLSL](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)) üzerinden vermeye çalışacağım.
 
