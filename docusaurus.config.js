@@ -8,7 +8,7 @@ module.exports = {
   projectName: 'graphic.notlarim', // Usually your repo name.
   themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig: {
-    sidebarCollapsible: false,
+    sidebarCollapsible: true,
     navbar: {
       title: 'Grafik Notlarım',
       logo: {
