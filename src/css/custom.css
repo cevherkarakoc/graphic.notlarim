@@ -14,9 +14,21 @@
   --ifm-color-primary-light: rgb(70, 203, 174);
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
+
+  --ifm-color-success: #3d8a3d;
+  --ifm-color-warning: #f1a00b;
+
   --ifm-code-font-size: 95%;
 
   --ifm-color-info: var(--ifm-color-info-darkest);
+}
+
+.alert--warning {
+  font-weight: 600;
+}
+
+.alert--warning strong {
+  font-weight: 800;
 }
 
 .docusaurus-highlight-code-line {
