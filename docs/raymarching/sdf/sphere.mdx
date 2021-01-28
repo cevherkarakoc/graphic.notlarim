@@ -1,0 +1,41 @@
+---
+title: Küre (Sphere) 
+---
+import { InlineMath, BlockMath } from "react-katex";
+import RayMarcer from "../../../src/components/RayMarcer";
+import Image from "../../../src/components/Image";
+
+:::caution Dikkat
+  Eğer **_graphic_** notlarımı ilk defa okuyorsanız. İlk önce [Giriş](intro.md) belgesini okumanızı tavsite ederim.
+:::
+:::tip Ön Bilgi
+  * <span style={{lineHeight: '2.5em'}}>Bir noktanın <InlineMath>{String.raw`P(x,y)`}</InlineMath>, orijine <InlineMath>{String.raw`O(0,0)`}</InlineMath> uzaklığınun formulü : </span>
+<InlineMath>
+    {String.raw`
+        OP = \sqrt{(x-0)^2 + (y-0)^2} = \sqrt{x^2 + y^2}
+    `}
+</InlineMath>
+  * **GLSL**'de bu hesap için [length(P)](https://www.khronos.org/opengles/sdk/docs/manglsl/docbook4/xhtml/length.xml) fonksiyonu kullanılabilir.  
+    **Örnek** olarak, length( vec2( 3.0 , 4.0 ) ) işlemi **5.0 (float)** değerini dönecektir.
+:::
+:::note Not
+  * Hesaplamayı kolaylaştırmak için **kürenin** merkezinin orijin noktasında olduğunu varsayıyoruz.
+:::
+
+### Hesaplanması
+
+**Noktanın (P)**, kürenin yüzeyine olan uzaklığını hesaplamamız gerekiyor.  
+Bunun için ise önce **noktanın** kürenin merkezine(bizim için orijin) olan uzaklığına ihtiyacımız var ve bunu _length(P)_ ile elde edebiliriz.  
+Son olarak bu sonuçtan **kürenin yarı çapını (r)** çıkarırsak yüzeye olan uzaklığı hesaplamış oluruz.  
+Sonuç olarak şuna ulaşıyoruz : 
+```c
+length(P) - r
+```
+
+<Image src='/img/sdf-sphere.png' size='200px'>
+  Çarpaz Çarpım
+</Image>
+
+### Canlı Örnek
+
+<RayMarcer name='sphere'/>

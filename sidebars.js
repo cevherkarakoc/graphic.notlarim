@@ -5,5 +5,12 @@ module.exports = {
       "algebra/vector",
       "algebra/transformation"
     ],
+    'Ray Marching' : [{
+      type: 'category',
+      label: 'İşaretli Mesafe Fonksiyonları (SDF)',
+      items : [
+        "raymarching/sdf/sphere"
+      ]
+    }]
   },
 };
