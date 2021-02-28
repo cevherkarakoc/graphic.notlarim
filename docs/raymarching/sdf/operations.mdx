@@ -1,0 +1,38 @@
+---
+title: İşlemler 
+---
+import RayMarcer from "../../../src/components/RayMarcer";
+import Image from "../../../src/components/Image";
+
+## Boolean İşlemler
+
+İki SDF sonucu, [kümüler cebirinden](https://acikders.tuba.gov.tr/mod/resource/view.php?id=731) de bilebileceğimiz birleşim, kesişim ve fark işlemleri ile bir araya getirmek için kullanılabilir. 
+
+### Birleşim (Union)
+SDF değerlerinden **en küçük** (kameraya en yakın) değer alınarak birleşim hesaplanabilir.  
+Bir sahne oluşturmak için kullanılacak en temel işlemdir.
+<Image src='/img/union.svg' size='200px'>
+  Birleşim (Union) Grafiği
+</Image>
+
+<RayMarcer name='union' />
+
+### Kesişim (Intersection)
+SDF değerlerinden **en büyük** (kameraya en uzuk) değer alınarak birleşim hesaplanabilir.  
+Normal durumda bu değer, bir başka nesnenin içerisinde kaldığı için kamerada görünmeyecekti.
+<Image src='/img/intersection.svg' size='200px'>
+  Birleşim (Union) Grafiği
+</Image>
+
+<RayMarcer name='intersection' />
+
+### Fark (Difference)
+SDF değerlerinden çıkarılacak olanın ters yüz edilmiş hali ile diğerine birleşim işlemi yapılması ile fark hesaplanabilir.
+:::note Not
+  * SDF değerinde negatif değerler nesnenin içerisini pozitif değerler dışarısını ifade ediyor. Bu durumda -1 ile çarpımında iç-dış değişip **ters yüz** edilmiş olur.
+:::
+<Image src='/img/difference.svg' size='200px'>
+  Birleşim (Union) Grafiği
+</Image>
+
+<RayMarcer name='difference' />

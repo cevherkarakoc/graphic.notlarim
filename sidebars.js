@@ -9,7 +9,8 @@ module.exports = {
       type: 'category',
       label: 'İşaretli Mesafe Fonksiyonları (SDF)',
       items : [
-        "raymarching/sdf/sphere"
+        "raymarching/sdf/sphere",
+        "raymarching/sdf/operations",
       ]
     }]
   },
