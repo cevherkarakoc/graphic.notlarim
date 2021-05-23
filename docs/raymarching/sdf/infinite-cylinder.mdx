@@ -1,0 +1,43 @@
+---
+title: Sonsuz Silindir (Infinite Cylinder) 
+sidebar_position: 2
+---
+import { InlineMath, BlockMath } from "react-katex";
+import RayMarcer from "../../../src/components/RayMarcer";
+import Image from "../../../src/components/Image";
+
+:::caution Dikkat
+  Eğer **_graphic_** notlarımı ilk defa okuyorsanız. İlk önce [Giriş](intro.md) belgesini okumanızı tavsite ederim.
+:::
+:::note Not
+  * Hesaplamayı kolaylaştırmak için **silindirin** merkezinin orijin noktasında olduğunu ve **Y ekseni** üzerinde yükseldiğini varsayıyoruz.
+  * Farklı bir eğimde sonuç elde etmek için **P** noktası üzerinde **dönüşüm** işlemleri yapılabilir.
+:::
+
+### Hesaplanması
+
+**Noktanın (P)**, silindirin yüzeyine olan uzaklığını hesaplamamız gerekiyor.  
+Bunun için ise önce **noktanın** Y eksenine olan uzaklığına ihtiyacımız var ve bunu hipotenüs sayesinde şu şekilde hesaplayabiliriz:  
+
+<BlockMath>
+    {String.raw`
+        \sqrt{P_{\color{red}x}^2 + P_{\color{blue}z}^2}
+    `}
+</BlockMath>
+
+GLSL'de bu değeri _length(P.xz)_ ile elde edebiliriz.  
+Son olarak bu sonuçtan **silindirin yarı çapını (r)** çıkarırsak yüzeye olan uzaklığı hesaplamış oluruz.  
+Sonuç olarak şuna ulaşıyoruz: 
+```c
+length(P.xz) - r
+```
+
+<Image src='/img/sdf-infinite-cylinder.png' size='200px'>
+  Silindirin işaretli mesefa fonksiyonun açıklmasına yardımcı olmak için bir görsel.
+</Image>
+
+_Solda XY düzlemi, sağda XZ düzleminden bir kesit görünüyor._
+
+### Canlı Örnek
+
+<RayMarcer name='infinite_cylinder'/>
