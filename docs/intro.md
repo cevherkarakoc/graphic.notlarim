@@ -1,5 +1,6 @@
 ---
 title: Giriş
+sidebar_position: 1
 slug: /
 ---
 
