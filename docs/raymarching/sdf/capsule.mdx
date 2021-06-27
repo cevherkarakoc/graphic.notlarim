@@ -1,0 +1,64 @@
+---
+title: Kapsül (Capsule) 
+sidebar_position: 3
+---
+import { InlineMath, BlockMath } from "react-katex";
+import RayMarcer from "../../../src/components/RayMarcer";
+import Image from "../../../src/components/Image";
+
+:::caution Dikkat
+  Eğer **_graphic_** notlarımı ilk defa okuyorsanız. İlk önce [Giriş](intro.md) belgesini okumanızı tavsite ederim.
+:::
+:::note Not
+  * Hesaplamayı kolaylaştırmak için **kapsülün** merkezinin orijin noktasında olduğunu ve **Y ekseni** üzerinde yükseldiğini varsayıyoruz.
+  * Farklı bir eğimde sonuç elde etmek için **P** noktası üzerinde **dönüşüm** işlemleri yapılabilir.
+:::
+
+### Hesaplanması
+
+**Noktanın (P)**, kapsülün yüzeyine olan uzaklığını noktanın olası üç ayrı konumu için hesaplamamız gerekiyor.
+
+<div style={{display: 'flex', alignItems: 'flex-start'}}>
+
+  <img
+    src="/img/sdf-capsule.png"
+    alt="Example banner"
+    width="250"
+  />
+  <div style={{marginLeft: 12}}>
+
+  #### Yeşil Bölge
+  **P** noktasının, **(0, h, 0)** noktasına olan uzaklığınıdan **kapsülün yarı çapını (r)** çıkarak hesaplayabiliriz.  
+  **P** ile **(0,h, 0)** arasındaki mesafe **(Px, Py - h, Pz)** vektörünün uzunluğu ile eşit olduğu için bu hesabı kısaca şu şekilde elde edebiliriz: 
+  ```c
+  P.y -= h;
+  length(P) - r;
+  ```
+
+  #### Mavi Bölge
+  **(0, -h, 0)** noktası üzerinden **yeşil bölge** ile benzer bir şekilde hesaplanabilir. Bu durumda şunu elde ediyoruz:
+  ```c
+  P.y += h;
+  length(P) - r;
+  ```
+
+  </div>
+
+</div>
+
+#### Kırmızı Bölge
+Buradaki hesaplama için [Sonsuz Silindir](infinite-cylinder.mdx) için kullanılan yöntemi kullanabiliriz. Bu durumda şunu elde ediyoruz:
+```c
+P.y = 0;
+length(P) - r;
+```
+#### Üç Ayrı Durumun Birleştirilmesi
+_clamp_ fonksiyonu ile **Py** değeri **-h** ve **+h** değeri arasına sıkıştırılıp yukarıdaki 3 ayrı durumu sağlayabilecek şekilde şunu elde edebiliriz:
+```c
+P.y -= clamp( P.y , -h, h);
+length(P) - r;
+```
+
+### Canlı Örnek
+
+<RayMarcer name='capsule'/>
