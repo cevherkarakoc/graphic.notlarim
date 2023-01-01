@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgraphic_notlarim=self.webpackChunkgraphic_notlarim||[]).push([[960],{3769:a=>{a.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"default"}')}}]);
